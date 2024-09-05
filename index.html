@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Digital</title>
+    <!-- Menyertakan CDN Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Tambahkan style untuk efek navbar transparan */
+        #navbar {
+            transition: background-color 0.3s;
+        }
+        .navbar-transparent {
+            background-color: transparent;
+        }
+        .navbar-solid {
+            background-color: #1e3a8a; /* Warna biru solid */
+        }
+        /* Animasi untuk sidebar */
+        #sidebar {
+            transition: transform 0.3s ease;
+        }
+        /* Overlay */
+        #overlay {
+            transition: opacity 0.3s ease;
+        }
+        .overlay-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .overlay-visible {
+            opacity: 0.5;
+            pointer-events: auto;
+        }
+        /* Tampilkan form pencarian langsung di desktop */
+@media (min-width: 768px) {
+    #search-icon {
+        display: none;
+    }
+    #search-input {
+        display: block;
+    }
+}
+
+/* Sembunyikan form input di mobile secara default */
+
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-900">
+
+    <!-- Header -->
+    <header id="navbar" class="navbar-transparent fixed w-full z-50 text-white p-4 flex justify-between items-center top-0">
+        <!-- Logo dan burger menu -->
+        <div class="flex items-center">
+            <button id="sidebarToggle" class="mr-4 md:hidden focus:outline-none">
+                <!-- Icon Burger -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <img src="images/PERPUS.png" alt="Logo Perpustakaan" class="w-10">SMA Negeri 1 PSP
+        </div>
+        <!-- Form pencarian buku -->
+            <!-- Ganti div form pencarian dengan SVG ikon pencarian awalnya -->
+<div id="search-container" class="relative">
+    <button id="search-icon" class="focus:outline-none">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35"></path>
+        </svg>
+    </button>
+    <input id="search-input" type="text" placeholder="Cari buku..." class="border p-2 rounded-md text-black w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 hidden">
+    <div id="search-results" class="absolute left-0 right-0 bg-white border rounded-md mt-1 max-h-48 overflow-y-auto hidden z-10"></div>
+
+        </div>
+        <!-- Menu Navbar untuk tampilan desktop -->
+        <nav class="hidden md:flex space-x-4">
+            <a href="#" class="text-gray-300 hover:text-white">Home</a>
+            <a href="#" class="text-gray-300 hover:text-white">Koleksi Buku</a>
+            <a href="#" class="text-gray-300 hover:text-white">Tentang Kami</a>
+            <a href="#" class="text-gray-300 hover:text-white">Kontak</a>
+        </nav>
+    </header>
+
+    <!-- Gambar Background dengan Teks -->
+    <div class="relative w-screen top-0">
+        <img src="images/smansa.jpeg" alt="Perpustakaan Digital" class="w-full h-[350px] object-cover bg-cover">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50">
+            <h1 class="text-2xl md:text-4xl font-bold">PERPUSTAKAAN DIGITAL</h1>
+            <h2 class="text-lg md:text-2xl mt-2">SMA Negeri 1 Padangsidimpuan</h2>
+        </div>
+    </div>
+
+    <!-- Sidebar dan Konten -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-100 p-4 transform -translate-x-full md:translate-x-0 z-20 top-[60px] md:top-0 md:hidden">
+            <!-- Tombol Tutup Sidebar -->
+            <button id="close-sidebar" class="absolute top-4 right-4 text-gray-700 hover:text-gray-900">
+                &times;
+            </button>
+            <!-- Navigasi sidebar -->
+            <nav>
+                <ul>
+                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Home</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Koleksi Buku</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Tentang Kami</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Kontak</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black overlay-hidden z-10 md:hidden"></div>
+
+        <!-- Konten Utama -->
+        <main class="flex-1 p-4 mt-4 md:ml-0">
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold">Selamat Datang di Perpustakaan Digital</h2>
+    <div class="mt-4 flex flex-col md:flex-row items-center">
+        <!-- Gambar -->
+        <img src="images/smansa.jpeg" alt="Gedung Sekolah" class="w-full md:w-1/2 h-auto object-cover rounded-lg shadow-md">
+
+        <!-- Teks -->
+        <div class="md:ml-8 mt-4 md:mt-0">
+            <p class="text-gray-700">
+                SMA Negeri 1 Padangsidimpuan merupakan salah satu sekolah menengah atas negeri yang berlokasi di Kota Padangsidimpuan, Sumatera Utara. Dengan visi yang jelas untuk mencetak generasi muda yang unggul dan berkarakter, sekolah ini berkomitmen untuk memberikan pendidikan berkualitas bagi seluruh siswanya.
+            </p>
+            <div class="mt-4">
+                <p><strong>NPSN:</strong> 10212201</p>
+                <p><strong>Alamat:</strong> Jalan Merdeka No. 188 Kota Padangsidimpuan, Sumatera Utara</p>
+                <p><strong>Kepala Sekolah:</strong> Dra. Nursyawiyah Hutauruk, M.Pd.</p>
+                <p><strong>Visi:</strong> Mewujudkan Generasi Yang Taqwa, Cerdas Berkarakter, Peduli Lingkungan Dan Bermartabat Serta Berwawasan Global</p>
+            </div>
+            <p><strong>Media Sosial:</strong></p>
+            <ul class="list-disc ml-6">
+                <li><a href="https://www.facebook.com/profile.php?id=100073554588913" class="text-blue-500 hover:underline">Facebook</a></li>
+                <li><a href="https://instagram.com/sman1psp" class="text-blue-500 hover:underline">Instagram</a></li>
+                <li><a href="https://youtube.com/@smanegeri1padangsidimpuan759" class="text-blue-500 hover:underline">YouTube</a></li>
+            </ul>
+        </div>
+               
+            </section>
+
+            <section class="mb-8">
+    <h3 class="text-xl font-bold">Koleksi Buku</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+        <!-- Contoh Buku 1 -->
+        <div class="border p-4 rounded-lg shadow hover:shadow-lg transition">
+            <h4 class="text-lg font-semibold">Judul Buku 1</h4>
+            <p class="text-gray-600 mt-2">Deskripsi singkat buku 1...</p>
+            <a href="#" class="text-blue-500 hover:underline mt-4 block">Baca lebih lanjut</a>
+        </div>
+        <!-- Contoh Buku 2 -->
+        <div class="border p-4 rounded-lg shadow hover:shadow-lg transition">
+            <h4 class="text-lg font-semibold">Judul Buku 2</h4>
+            <p class="text-gray-600 mt-2">Deskripsi singkat buku 2...</p>
+            <a href="#" class="text-blue-500 hover:underline mt-4 block">Baca lebih lanjut</a>
+        </div>
+        <!-- Tambahkan lebih banyak buku sesuai kebutuhan -->
+    </div>
+</section>
+
+        </main>
+    </div>
+
+    <!-- JavaScript untuk Live Search, Toggle Sidebar, dan Navbar Transparan -->
+    <script>
+        const books = [
+    { title: 'Judul Buku 1', description: 'Deskripsi singkat buku 1...', url: '#' },
+    { title: 'Judul Buku 2', description: 'Deskripsi singkat buku 2...', url: '#' },
+    // Tambahkan lebih banyak buku sesuai kebutuhan
+];
+
+const searchIcon = document.getElementById('search-icon');
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+const navbar = document.getElementById('navbar');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sidebar = document.getElementById('sidebar');
+const closeSidebar = document.getElementById('close-sidebar');
+const overlay = document.getElementById('overlay');
+
+// Handle search input and results
+searchIcon.addEventListener('click', () => {
+    searchIcon.classList.add('hidden'); // Sembunyikan ikon pencarian
+    searchInput.classList.remove('hidden'); // Tampilkan form input
+    searchInput.focus(); // Fokus pada form input
+});
+
+searchInput.addEventListener('blur', () => {
+    // Hanya sembunyikan form input jika tidak ada teks yang diketik
+    if (!searchInput.value.trim()) {
+        searchIcon.classList.remove('hidden'); // Tampilkan ikon pencarian
+        searchInput.classList.add('hidden'); // Sembunyikan form input
+    }
+});
+
+searchInput.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query));
+    
+    searchResults.innerHTML = '';
+    searchResults.classList.toggle('hidden', !query);
+
+    filteredBooks.forEach(book => {
+        const bookItem = document.createElement('div');
+        bookItem.className = 'p-2 hover:bg-gray-100';
+        bookItem.innerHTML = `<a href="${book.url}" class="block text-blue-600 hover:underline">${book.title}</a>`;
+        searchResults.appendChild(bookItem);
+    });
+});
+
+// Toggle sidebar on mobile
+sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('-translate-x-full');
+    sidebar.classList.toggle('translate-x-0');
+    overlay.classList.toggle('overlay-visible');
+    overlay.classList.toggle('overlay-hidden');
+});
+
+// Close sidebar on clicking the overlay or button
+closeSidebar.addEventListener('click', () => {
+    closeSidebarFunction();
+});
+
+overlay.addEventListener('click', () => {
+    closeSidebarFunction();
+});
+
+function closeSidebarFunction() {
+    sidebar.classList.add('-translate-x-full');
+    sidebar.classList.remove('translate-x-0');
+    overlay.classList.add('overlay-hidden');
+    overlay.classList.remove('overlay-visible');
+}
+
+// Mengubah background navbar ketika scroll
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+        navbar.classList.remove('navbar-transparent');
+        navbar.classList.add('navbar-solid');
+    } else {
+        navbar.classList.add('navbar-transparent');
+        navbar.classList.remove('navbar-solid');
+    }
+});
+
+    </script>
+</body>
+</html>
