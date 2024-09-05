@@ -11,6 +11,11 @@
         #navbar {
             transition: background-color 0.3s;
         }
+        #navbar > div {
+    white-space: nowrap; /* Mencegah teks terpotong */
+    overflow: hidden; /* Sembunyikan overflow */
+    text-overflow: ellipsis; /* Tambahkan titik-titik jika teks terlalu panjang */
+}
         .navbar-transparent {
             background-color: transparent;
         }
@@ -59,7 +64,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
-            <img src="images/PERPUS.png" alt="Logo Perpustakaan" class="w-10">SMA Negeri 1 PSP
+            <img src="images/PERPUS.png" alt="Logo Perpustakaan" class="w-10">
+            <span class="text-title">SMA Negeri 1 PSP</span>
         </div>
         <!-- Form pencarian buku -->
             <!-- Ganti div form pencarian dengan SVG ikon pencarian awalnya -->
@@ -94,15 +100,15 @@
     <!-- Sidebar dan Konten -->
     <div class="flex">
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-100 p-4 transform -translate-x-full md:translate-x-0 z-20 top-[60px] md:top-0 md:hidden">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-100 p-4 transform -translate-x-full md:translate-x-0 z-20 md:top-0 md:hidden">
             <!-- Tombol Tutup Sidebar -->
             <button id="close-sidebar" class="absolute top-4 right-4 text-gray-700 hover:text-gray-900">
-                &times;
+                
             </button>
             <!-- Navigasi sidebar -->
             <nav>
                 <ul>
-                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Home</a></li>
+                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded mt-[75px]">Home</a></li>
                     <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Koleksi Buku</a></li>
                     <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Tentang Kami</a></li>
                     <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Kontak</a></li>
@@ -171,6 +177,8 @@
     // Tambahkan lebih banyak buku sesuai kebutuhan
 ];
 
+let hasScrolled = window.scrollY > 10;
+
 const searchIcon = document.getElementById('search-icon');
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
@@ -185,6 +193,10 @@ searchIcon.addEventListener('click', () => {
     searchIcon.classList.add('hidden'); // Sembunyikan ikon pencarian
     searchInput.classList.remove('hidden'); // Tampilkan form input
     searchInput.focus(); // Fokus pada form input
+    if (!hasScrolled) {
+        navbar.classList.add('navbar-solid');
+        navbar.classList.remove('navbar-transparent');
+    }
 });
 
 searchInput.addEventListener('blur', () => {
@@ -192,6 +204,9 @@ searchInput.addEventListener('blur', () => {
     if (!searchInput.value.trim()) {
         searchIcon.classList.remove('hidden'); // Tampilkan ikon pencarian
         searchInput.classList.add('hidden'); // Sembunyikan form input
+        if (!hasScrolled) {
+        navbar.classList.remove('navbar-solid');
+        navbar.classList.add('navbar-transparent');}
     }
 });
 
@@ -212,10 +227,27 @@ searchInput.addEventListener('input', function () {
 
 // Toggle sidebar on mobile
 sidebarToggle.addEventListener('click', () => {
+	const isSidebarOpen = !sidebar.classList.contains('-translate-x-full');
+
     sidebar.classList.toggle('-translate-x-full');
+    navbar.classList.add('navbar-solid');
     sidebar.classList.toggle('translate-x-0');
     overlay.classList.toggle('overlay-visible');
     overlay.classList.toggle('overlay-hidden');
+    if (isSidebarOpen) {
+        // Jika sidebar baru saja ditutup dan posisi scroll kurang dari 10px, kembalikan navbar ke transparan
+        if (!hasScrolled) {
+            navbar.classList.remove('navbar-solid');
+            navbar.classList.add('navbar-transparent');
+        }
+    } else {
+        // Jika sidebar baru saja dibuka dan posisi scroll kurang dari 10px, tambahkan background solid
+        if (!hasScrolled) {
+            navbar.classList.add('navbar-solid');
+            navbar.classList.remove('navbar-transparent');
+        }
+        }
+    
 });
 
 // Close sidebar on clicking the overlay or button
@@ -232,16 +264,22 @@ function closeSidebarFunction() {
     sidebar.classList.remove('translate-x-0');
     overlay.classList.add('overlay-hidden');
     overlay.classList.remove('overlay-visible');
+    
 }
 
 // Mengubah background navbar ketika scroll
 window.addEventListener('scroll', function () {
-    if (window.scrollY > 10) {
+    hasScrolled = window.scrollY > 10; // Update status scroll
+
+    if (hasScrolled) {
         navbar.classList.remove('navbar-transparent');
         navbar.classList.add('navbar-solid');
     } else {
-        navbar.classList.add('navbar-transparent');
-        navbar.classList.remove('navbar-solid');
+        // Hanya ubah background jika sidebar dan search bar tidak sedang terbuka
+        if (!sidebar.classList.contains('translate-x-0') && searchInput.classList.contains('hidden')) {
+            navbar.classList.add('navbar-transparent');
+            navbar.classList.remove('navbar-solid');
+        }
     }
 });
 
