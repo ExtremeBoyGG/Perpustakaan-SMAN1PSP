@@ -1,4 +1,4 @@
-const books = [
+const Books = [
     { title: 'Judul Buku 1', description: 'Deskripsi singkat buku 1...', url: '#' },
     { title: 'Judul Buku 2', description: 'Deskripsi singkat buku 2...', url: '#' },
     // Tambahkan lebih banyak buku sesuai kebutuhan
@@ -49,7 +49,7 @@ searchInput.addEventListener('input', function () {
         searchResults.classList.add('hidden');
     } else {
         // Filter dan tampilkan hasil pencarian
-        const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query));
+        const filteredBooks = Books.filter(book => book.title.toLowerCase().includes(query));
         
         if (filteredBooks.length === 0) {
             searchResults.classList.add('hidden');
