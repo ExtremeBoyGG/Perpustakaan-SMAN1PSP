@@ -263,7 +263,7 @@
         searchInputs.addEventListener('input', searchBooks);
 
         // Mengambil data buku dari file JSON dan menampilkan buku
-        fetch('books.json')
+        fetch('/katalog/novel/books.json')
             .then(response => response.json())
             .then(data => {
                 books = data;
