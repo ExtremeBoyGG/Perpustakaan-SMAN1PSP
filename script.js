@@ -1,89 +1,89 @@
 const Books = [
-    {"id":41,title:"About Friend","author":"Tere Liye",url:""}
-    {"id":42,title:"About Life","author":"Tere Liye",url:""}
-    {"id":2,title:"Amiko_Te Amo","author":"Anjar Lembayung",url:""}
-    {"id":20,title:"Ancika","author":"Pidi Baiq",url:""}
-    {"id":28,title:"Autopilot Romance","author":"RevelRebel",url:""}
-    {"id":43,title:"Ayahku Bukan Pembohong","author":"Tere Liye",url:""}
-    {"id":44,title:"Bedebah di Ujung Tanduk","author":"Tere Liye",url:""}
-    {"id":29,title:"Behind The Scene","author":"RevelRebel",url:""}
-    {"id":45,title:"Bibi Gill","author":"Tere Liye",url:""}
-    {"id":5,title:"Boulevard of Wedding Dreams","author":"Ika Vihara",url:""}
-    {"id":46,title:"Bulan","author":"Tere Liye",url:""}
-    {"id":47,title:"Bumi","author":"Tere Liye",url:""}
-    {"id":48,title:"Ceroz Batozar","author":"Tere Liye",url:""}
-    {"id":30,title:"Cut The Crap 1 & 2","author":"RevelRebel",url:""}
-    {"id":50,title:"DIKATAKAN ATAU TIDAK DIKATAKAN","author":"Tere Liye",url:""}
-    {"id":7,title:"Dangerous Sister","author":"Enniyy",url:""}
-    {"id":49,title:"Daun Yang Jatuh Tak Pernah Membenci Angin","author":"Tere Liye",url:""}
-    {"id":8,title:"Diandra (The Real Pelakor)","author":"Rahmanana030",url:""}
-    {"id":85,title:"Eray Dewi Pringgo","author":"Vero Lala",url:""}
-    {"id":9,title:"Ex Cetera","author":"mrs_sasasmayaya",url:""}
-    {"id":10,title:"Forgive Me","author":"Cha Riyadi",url:""}
-    {"id":51,title:"Gnalup Pergi","author":"Tere Liye",url:""}
-    {"id":23,title:"Heavenly","author":"Prisca Primasari",url:""}
-    {"id":18,title:"Hello cello","author":"Nadia Ristivani",url:""}
-    {"id":24,title:"Hope","author":"Prisca Primasari",url:""}
-    {"id":52,title:"Hujan","author":"Tere Liye",url:""}
-    {"id":39,title:"Ilusi","author":"Sinar Rembulan",url:""}
-    {"id":11,title:"Istri Muda Sang Pewaris","author":"Di evil",url:""}
-    {"id":12,title:"Kanthi(L)","author":"Shofie Hapsari",url:""}
-    {"id":25,title:"Kastil Es & Air Mancur yang Berdansa","author":"Prisca Primasari",url:""}
-    {"id":53,title:"Kau Aku dan Sepucuk Angpau Merah-1","author":"Tere Liye",url:""}
-    {"id":54,title:"Komet Minor -","author":"Tere Liye",url:""}
-    {"id":55,title:"LUMPU ","author":"Tere Liye",url:""}
-    {"id":31,title:"Love Paint","author":"RevelRebel",url:""}
-    {"id":13,title:"Love The Way You Lie","author":"Carmen LaBohemian",url:""}
-    {"id":26,title:"Love Theft","author":"Prisca Primasari",url:""}
-    {"id":14,title:"Lovely Natalie","author":"Dindin Thabita",url:""}
-    {"id":56,title:"Matahari","author":"Tere Liye",url:""}
-    {"id":79,title:"Melarung Mimpi","author":"Titi Sanaria",url:""}
-    {"id":80,title:"Melarung Mimpi Extra Part","author":"Titi Sanaria",url:""}
-    {"id":16,title:"Midnight Secretary","author":"Nev Nov",url:""}
-    {"id":83,title:"Mr. Perfect","author":"Twoprince_Oneking",url:""}
-    {"id":84,title:"Mr. Perfect Extra Part","author":"Twoprince_Oneking",url:""}
-    {"id":17,title:"My Friends Wife Maia","author":"Kevin Prasastha",url:""}
-    {"id":57,title:"Nebula (unedited version)","author":"Tere Liye",url:""}
-    {"id":59,title:"Negeri Para bedebah","author":"Tere Liye",url:""}
-    {"id":58,title:"Negeri di Ujung Tanduk","author":"Tere Liye",url:""}
-    {"id":32,title:"Never Been Kissed","author":"RevelRebel",url:""}
-    {"id":19,title:"Only With Me","author":"Sabila Septiani",url:""}
-    {"id":33,title:"Partner with benefit","author":"RevelRebel",url:""}
-    {"id":34,title:"Partner with benefit extra part","author":"RevelRebel",url:""}
-    {"id":60,title:"Pergi","author":"Tere Liye",url:""}
-    {"id":35,title:"Philosophy of Love","author":"RevelRebel",url:""}
-    {"id":61,title:"Pulang","author":"Tere Liye",url:""}
-    {"id":27,title:"Purple Eyes","author":"Prisca Primasari",url:""}
-    {"id":62,title:"Rasa","author":"Tere Liye",url:""}
-    {"id":1,title:"Relationshit ","author":"Alnira",url:""}
-    {"id":63,title:"Rembulan Tenggelam Di Wajahmu","author":"Tere Liye",url:""}
-    {"id":37,title:"Revenge","author":"Alfylla",url:""}
-    {"id":64,title:"Rindu","author":"Tere Liye",url:""}
-    {"id":65,title:"Sagaras","author":"Tere Liye",url:""}
-    {"id":66,title:"Sang Panandai","author":"Tere Liye",url:""}
-    {"id":38,title:"Sang Perawan","author":"Anjar Lembayung",url:""}
-    {"id":67,title:"Selena","author":"Tere Liye",url:""}
-    {"id":68,title:"Selena (unedited version)","author":"Tere Liye",url:""}
-    {"id":69,title:"Sepotong Hati Yang Baru","author":"Tere Liye",url:""}
-    {"id":70,title:"Sesuk","author":"Tere Liye",url:""}
-    {"id":71,title:"Si Anak Badai by","author":"Tere Liye",url:""}
-    {"id":73,title:"Si Anak Kuat","author":"Tere Liye",url:""}
-    {"id":75,title:"Si Anak Pintar","author":"Tere Liye",url:""}
-    {"id":76,title:"Si Anak Spesial","author":"Tere Liye",url:""}
-    {"id":77,title:"Si Putih","author":"Tere Liye",url:""}
-    {"id":72,title:"Si anak cahaya","author":"Tere Liye",url:""}
-    {"id":74,title:"Si anak pemberani","author":"Tere Liye",url:""}
-    {"id":86,title:"Silencio","author":"Winnyraca",url:""}
-    {"id":40,title:"Suami Pengganti","author":"Nah_Wa",url:""}
-    {"id":78,title:"TENTANG KAMU","author":"Tere Liye",url:""}
-    {"id":36,title:"The DaddyS Affair  (WP)(1)","author":"RevelRebel",url:""}
-    {"id":6,title:"The Marriage Cure","author":"Citra Novy",url:""}
-    {"id":81,title:"Titik Tanpa Koma","author":"Masda Raimunda",url:""}
-    {"id":15,title:"To Forgive","author":"Midgardst",url:""}
-    {"id":82,title:"Trapped","author":"Agustini Tandean",url:""}
-    {"id":21,title:"Trapped By You","author":"Pipit Chie",url:""}
-    {"id":22,title:"Trapped By You Extra Part","author":"Pipit Chie",url:""}
-    {"id":3,title:"Twoprince_Oneking","author":"Apa Daya Hati Ini",url:""}
+    {"id":41,title:"About Friend","author":"Tere Liye",url:"#"},
+    {"id":42,title:"About Life","author":"Tere Liye",url:"#"},
+    {"id":2,title:"Amiko_Te Amo","author":"Anjar Lembayung",url:"#"},
+    {"id":20,title:"Ancika","author":"Pidi Baiq",url:"#"},
+    {"id":28,title:"Autopilot Romance","author":"RevelRebel",url:"#"},
+    {"id":43,title:"Ayahku Bukan Pembohong","author":"Tere Liye",url:"#"},
+    {"id":44,title:"Bedebah di Ujung Tanduk","author":"Tere Liye",url:"#"},
+    {"id":29,title:"Behind The Scene","author":"RevelRebel",url:"#"},
+    {"id":45,title:"Bibi Gill","author":"Tere Liye",url:"#"},
+    {"id":5,title:"Boulevard of Wedding Dreams","author":"Ika Vihara",url:"#"},
+    {"id":46,title:"Bulan","author":"Tere Liye",url:"#"},
+    {"id":47,title:"Bumi","author":"Tere Liye",url:"#"},
+    {"id":48,title:"Ceroz Batozar","author":"Tere Liye",url:"#"},
+    {"id":30,title:"Cut The Crap 1 & 2","author":"RevelRebel",url:"#"},
+    {"id":50,title:"DIKATAKAN ATAU TIDAK DIKATAKAN","author":"Tere Liye",url:"#"},
+    {"id":7,title:"Dangerous Sister","author":"Enniyy",url:"#"},
+    {"id":49,title:"Daun Yang Jatuh Tak Pernah Membenci Angin","author":"Tere Liye",url:"#"},
+    {"id":8,title:"Diandra (The Real Pelakor)","author":"Rahmanana030",url:"#"},
+    {"id":85,title:"Eray Dewi Pringgo","author":"Vero Lala",url:"#"},
+    {"id":9,title:"Ex Cetera","author":"mrs_sasasmayaya",url:"#"},
+    {"id":10,title:"Forgive Me","author":"Cha Riyadi",url:"#"},
+    {"id":51,title:"Gnalup Pergi","author":"Tere Liye",url:"#"},
+    {"id":23,title:"Heavenly","author":"Prisca Primasari",url:"#"},
+    {"id":18,title:"Hello cello","author":"Nadia Ristivani",url:"#"},
+    {"id":24,title:"Hope","author":"Prisca Primasari",url:"#"},
+    {"id":52,title:"Hujan","author":"Tere Liye",url:"#"},
+    {"id":39,title:"Ilusi","author":"Sinar Rembulan",url:"#"},
+    {"id":11,title:"Istri Muda Sang Pewaris","author":"Di evil",url:"#"},
+    {"id":12,title:"Kanthi(L)","author":"Shofie Hapsari",url:"#"},
+    {"id":25,title:"Kastil Es & Air Mancur yang Berdansa","author":"Prisca Primasari",url:"#"},
+    {"id":53,title:"Kau Aku dan Sepucuk Angpau Merah-1","author":"Tere Liye",url:"#"},
+    {"id":54,title:"Komet Minor -","author":"Tere Liye",url:"#"},
+    {"id":55,title:"LUMPU ","author":"Tere Liye",url:"#"},
+    {"id":31,title:"Love Paint","author":"RevelRebel",url:"#"},
+    {"id":13,title:"Love The Way You Lie","author":"Carmen LaBohemian",url:"#"},
+    {"id":26,title:"Love Theft","author":"Prisca Primasari",url:"#"},
+    {"id":14,title:"Lovely Natalie","author":"Dindin Thabita",url:"#"},
+    {"id":56,title:"Matahari","author":"Tere Liye",url:"#"},
+    {"id":79,title:"Melarung Mimpi","author":"Titi Sanaria",url:"#"},
+    {"id":80,title:"Melarung Mimpi Extra Part","author":"Titi Sanaria",url:"#"},
+    {"id":16,title:"Midnight Secretary","author":"Nev Nov",url:"#"},
+    {"id":83,title:"Mr. Perfect","author":"Twoprince_Oneking",url:"#"},
+    {"id":84,title:"Mr. Perfect Extra Part","author":"Twoprince_Oneking",url:"#"},
+    {"id":17,title:"My Friends Wife Maia","author":"Kevin Prasastha",url:"#"},
+    {"id":57,title:"Nebula (unedited version)","author":"Tere Liye",url:"#"},
+    {"id":59,title:"Negeri Para bedebah","author":"Tere Liye",url:"#"},
+    {"id":58,title:"Negeri di Ujung Tanduk","author":"Tere Liye",url:"#"},
+    {"id":32,title:"Never Been Kissed","author":"RevelRebel",url:"#"},
+    {"id":19,title:"Only With Me","author":"Sabila Septiani",url:"#"},
+    {"id":33,title:"Partner with benefit","author":"RevelRebel",url:"#"},
+    {"id":34,title:"Partner with benefit extra part","author":"RevelRebel",url:"#"},
+    {"id":60,title:"Pergi","author":"Tere Liye",url:"#"},
+    {"id":35,title:"Philosophy of Love","author":"RevelRebel",url:"#"},
+    {"id":61,title:"Pulang","author":"Tere Liye",url:"#"},
+    {"id":27,title:"Purple Eyes","author":"Prisca Primasari",url:"#"},
+    {"id":62,title:"Rasa","author":"Tere Liye",url:"#"},
+    {"id":1,title:"Relationshit ","author":"Alnira",url:"#"},
+    {"id":63,title:"Rembulan Tenggelam Di Wajahmu","author":"Tere Liye",url:"#"},
+    {"id":37,title:"Revenge","author":"Alfylla",url:"#"},
+    {"id":64,title:"Rindu","author":"Tere Liye",url:"#"},
+    {"id":65,title:"Sagaras","author":"Tere Liye",url:"#"},
+    {"id":66,title:"Sang Panandai","author":"Tere Liye",url:"#"},
+    {"id":38,title:"Sang Perawan","author":"Anjar Lembayung",url:"#"},
+    {"id":67,title:"Selena","author":"Tere Liye",url:"#"},
+    {"id":68,title:"Selena (unedited version)","author":"Tere Liye",url:"#"},
+    {"id":69,title:"Sepotong Hati Yang Baru","author":"Tere Liye",url:"#"},
+    {"id":70,title:"Sesuk","author":"Tere Liye",url:"#"},
+    {"id":71,title:"Si Anak Badai by","author":"Tere Liye",url:"#"},
+    {"id":73,title:"Si Anak Kuat","author":"Tere Liye",url:"#"},
+    {"id":75,title:"Si Anak Pintar","author":"Tere Liye",url:"#"},
+    {"id":76,title:"Si Anak Spesial","author":"Tere Liye",url:"#"},
+    {"id":77,title:"Si Putih","author":"Tere Liye",url:"#"},
+    {"id":72,title:"Si anak cahaya","author":"Tere Liye",url:"#"},
+    {"id":74,title:"Si anak pemberani","author":"Tere Liye",url:"#"},
+    {"id":86,title:"Silencio","author":"Winnyraca",url:"#"},
+    {"id":40,title:"Suami Pengganti","author":"Nah_Wa",url:"#"},
+    {"id":78,title:"TENTANG KAMU","author":"Tere Liye",url:"#"},
+    {"id":36,title:"The DaddyS Affair  (WP)(1)","author":"RevelRebel",url:"#"},
+    {"id":6,title:"The Marriage Cure","author":"Citra Novy",url:"#"},
+    {"id":81,title:"Titik Tanpa Koma","author":"Masda Raimunda",url:"#"},
+    {"id":15,title:"To Forgive","author":"Midgardst",url:"#"},
+    {"id":82,title:"Trapped","author":"Agustini Tandean",url:"#"},
+    {"id":21,title:"Trapped By You","author":"Pipit Chie",url:"#"},
+    {"id":22,title:"Trapped By You Extra Part","author":"Pipit Chie",url:"#"},
+    {"id":3,title:"Twoprince_Oneking","author":"Apa Daya Hati Ini",url:"#"}
 ];
 
 let hasScrolled = window.scrollY > 10;
