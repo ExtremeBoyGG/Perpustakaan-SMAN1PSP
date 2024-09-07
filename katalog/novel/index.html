@@ -167,9 +167,8 @@
             <button id="next-page" class="px-4 py-2 mx-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
         </div>
     </main>
-
-    <script>
-        const searchInput = document.getElementById('searchInput');
+<script>
+	const searchInputs = document.getElementById('searchInput');
         const booksTableBody = document.getElementById('bookTable');
         const previousPageButton = document.getElementById('previous-page');
         const nextPageButton = document.getElementById('next-page');
@@ -208,7 +207,7 @@
 
         // Fungsi untuk mencari buku berdasarkan input
         function searchBooks() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
+            const searchTerm = searchInputs.value.trim().toLowerCase();
 
             // Jika input pencarian kosong, tampilkan semua buku
             if (searchTerm === '') {
@@ -229,7 +228,7 @@
 
         // Fungsi untuk navigasi ke halaman berikutnya
         function nextPage() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
+            const searchTerm = searchInputs.value.trim().toLowerCase();
             const filteredBooks = searchTerm ? books.filter(book =>
                 book.title.toLowerCase().includes(searchTerm) ||
                 book.author.toLowerCase().includes(searchTerm)
@@ -245,7 +244,7 @@
         function previousPage() {
             if (currentPage > 1) {
                 currentPage--;
-                const searchTerm = searchInput.value.trim().toLowerCase();
+                const searchTerm = searchInputs.value.trim().toLowerCase();
                 const filteredBooks = searchTerm ? books.filter(book =>
                     book.title.toLowerCase().includes(searchTerm) ||
                     book.author.toLowerCase().includes(searchTerm)
@@ -260,7 +259,7 @@
         previousPageButton.addEventListener('click', previousPage);
 
         // Panggil fungsi pencarian saat pengguna mengetik di search bar
-        searchInput.addEventListener('input', searchBooks);
+        searchInputs.addEventListener('input', searchBooks);
 
         // Mengambil data buku dari file JSON dan menampilkan buku
         fetch('books.json')
@@ -270,7 +269,7 @@
                 displayBooks();
             })
             .catch(error => console.error('Error fetching books:', error));
-    </script>
+            </script>
     <script src="/script.js"></script>
 </body>
 </html>
