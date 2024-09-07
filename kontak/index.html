@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan Digital SMAN 1 PSP | Buku Novel</title>
+    <title>Perpustakaan Digital SMAN 1 PSP | Kontak</title>
     <!-- Menyertakan CDN Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
     	#search-results {
     width: 100%; /* Agar elemen hasil pencarian sama lebar dengan input */
@@ -132,145 +133,51 @@
         </aside>
         <!-- Overlay -->
         <div id="overlay" class="fixed inset-0 bg-black overlay-hidden z-10 md:hidden"></div>
-
     <main class="container mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-4">Katalog Novel</h1>
+        <h1 class="text-3xl font-bold mb-6">Kontak Kami</h1>
         
-        <!-- Search Bar -->
-        <div class="mb-4">
-            <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="Cari judul novel..." 
-                class="w-full p-2 border border-gray-300 rounded"
-            />
-        </div>
-        
-        <!-- Tabel Buku -->
-        <table class="min-w-full bg-white">
-            <thead>
-                <tr>
-                    <th class="py-0 px-0 border">Judul</th>
-                    <th class="py-0 px-0 border">Penulis</th>
-                    <th class="py-2 px-0 border">Baca</th>
-                </tr>
-            </thead>
-            <tbody id="bookTable">
-                <!-- Buku akan dimuat di sini secara dinamis -->
-            </tbody>
-        </table>
-        
-        <!-- Navigasi Halaman -->
-        <div id="pagination-controls" class="flex justify-center my-4">
-            <button id="previous-page" class="px-4 py-2 mx-2 bg-gray-200 rounded hover:bg-gray-300">Previous</button>
-            <span id="page-info" class="mx-4">Page 1</span>
-            <button id="next-page" class="px-4 py-2 mx-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Kotak Kontak Sekolah -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Kontak Sekolah</h2>
+                <center><img src="/images/PERPUS.png" class="rounded-full w-44 mt-[-27px]"></center>
+                <p class="mb-4">Jika Anda memiliki pertanyaan terkait sekolah, silakan hubungi kami di:</p>
+                <p class="mb-4">Email: <a href="mailto:smanpasid@gmail.com" class="text-blue-500 hover:underline">smanpasid@gmail.com</a></p>
+                <h3 class="text-lg font-semibold mb-2">Ikuti Kami di Media Sosial</h3>
+                <div class="flex space-x-7">
+                    <a href="https://www.facebook.com/profile.php?id=100073554588913" target="_blank" class="text-blue-600 hover:text-blue-800">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                    <a href="https://youtube.com/@smanegeri1padangsidimpuan759" target="_blank" class="text-red-600 hover:text-blue-600">
+                        <i class="fab fa-youtube fa-2x"></i>
+                    </a>
+                    <a href="https://www.instagram.com/sman1psp" target="_blank" class="text-pink-500 hover:text-pink-700">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Kotak Kontak Developer -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Kontak Developer</h2>
+                <center><img src="/images/ExtremeBoy.jpeg" class="rounded-full w-32 mb-5"></center>
+                <p class="mb-4">Untuk pertanyaan terkait pengembangan situs atau laporan bug, hubungi kami di:</p>
+                <p class="mb-4">Email: <a href="mailto:extremeboybot@gmail.com" class="text-blue-500 hover:underline">extremeboybot@gmail.com</a></p>
+                <h3 class="text-lg font-semibold mb-2">Ikuti Kami di Media Sosial</h3>
+                <div class="flex space-x-7">
+                    <a href="https://www.facebook.com/ExtremeBoy.GGUsee" target="_blank" class="text-blue-600 hover:text-blue-800">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                    <a href="https://twitter.com/ExtremeBoyGG" target="_blank" class="text-blue-400 hover:text-blue-600">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                    <a href="https://www.instagram.com/heril.d.rtg" target="_blank" class="text-pink-500 hover:text-pink-700">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
-<script>
-	const searchInputs = document.getElementById('searchInput');
-        const booksTableBody = document.getElementById('bookTable');
-        const previousPageButton = document.getElementById('previous-page');
-        const nextPageButton = document.getElementById('next-page');
-        const pageInfo = document.getElementById('page-info');
-        
-
-        const booksPerPage = 20; // Jumlah buku per halaman
-        let currentPage = 1; // Halaman aktif saat ini
-        let books = []; // Daftar buku
-
-        // Fungsi untuk menampilkan buku berdasarkan halaman
-        function displayBooks(filteredBooks = books) {
-            booksTableBody.innerHTML = '';
-
-            // Hitung indeks buku yang ditampilkan berdasarkan halaman aktif
-            const startIndex = (currentPage - 1) * booksPerPage;
-            const endIndex = startIndex + booksPerPage;
-            const booksToDisplay = filteredBooks.slice(startIndex, endIndex);
-
-            booksToDisplay.forEach(book => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="py-5 px-2 border">${book.title}</td>
-                    <td class="py-5 px-2 border">${book.author}</td>
-                    <td class="py-5 px-2 border"><a href="${book.pdf}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center justify-center hover:bg-blue-600 block hover:underline"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a></td>`;
-                booksTableBody.appendChild(row);
-            });
-
-            // Update informasi halaman
-            pageInfo.textContent = `Page ${currentPage}`;
-
-            // Perbarui tombol navigasi
-            previousPageButton.disabled = currentPage === 1;
-            nextPageButton.disabled = endIndex >= filteredBooks.length;
-        }
-
-        // Fungsi untuk mencari buku berdasarkan input
-        function searchBooks() {
-            const searchTerm = searchInputs.value.trim().toLowerCase();
-
-            // Jika input pencarian kosong, tampilkan semua buku
-            if (searchTerm === '') {
-                currentPage = 1; // Reset halaman ke awal
-                displayBooks(books);
-                return;
-            }
-
-            // Filter buku berdasarkan judul atau penulis yang mengandung kata kunci pencarian
-            const filteredBooks = books.filter(book =>
-                book.title.toLowerCase().includes(searchTerm) ||
-                book.author.toLowerCase().includes(searchTerm)
-            );
-
-            currentPage = 1; // Reset halaman ke awal
-            displayBooks(filteredBooks);
-        }
-
-        // Fungsi untuk navigasi ke halaman berikutnya
-        function nextPage() {
-            const searchTerm = searchInputs.value.trim().toLowerCase();
-            const filteredBooks = searchTerm ? books.filter(book =>
-                book.title.toLowerCase().includes(searchTerm) ||
-                book.author.toLowerCase().includes(searchTerm)
-            ) : books;
-
-            if ((currentPage * booksPerPage) < filteredBooks.length) {
-                currentPage++;
-                displayBooks(filteredBooks);
-            }
-        }
-
-        // Fungsi untuk navigasi ke halaman sebelumnya
-        function previousPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                const searchTerm = searchInputs.value.trim().toLowerCase();
-                const filteredBooks = searchTerm ? books.filter(book =>
-                    book.title.toLowerCase().includes(searchTerm) ||
-                    book.author.toLowerCase().includes(searchTerm)
-                ) : books;
-
-                displayBooks(filteredBooks);
-            }
-        }
-
-        // Event listener untuk tombol navigasi
-        nextPageButton.addEventListener('click', nextPage);
-        previousPageButton.addEventListener('click', previousPage);
-
-        // Panggil fungsi pencarian saat pengguna mengetik di search bar
-        searchInputs.addEventListener('input', searchBooks);
-
-        // Mengambil data buku dari file JSON dan menampilkan buku
-        fetch('books.json')
-            .then(response => response.json())
-            .then(data => {
-                books = data;
-                displayBooks();
-            })
-            .catch(error => console.error('Error fetching books:', error));
-            </script>
     <script src="/script.js"></script>
 </body>
 </html>
