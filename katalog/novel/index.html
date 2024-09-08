@@ -200,7 +200,7 @@
                 row.innerHTML = `
                     <td class="py-5 px-2 border">${book.title}</td>
                     <td class="py-5 px-2 border">${book.author}</td>
-                    <td class="py-5 px-2 border"><a href="/baca.html?id=${book.pdf}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center justify-center hover:bg-blue-600 block hover:underline"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <td class="py-5 px-2 border"><a href="/baca.html?id=${fileId}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center justify-center hover:bg-blue-600 block hover:underline"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a></td>`;
                 booksTableBody.appendChild(row);
             });
