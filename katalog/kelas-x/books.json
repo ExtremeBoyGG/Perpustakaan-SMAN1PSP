@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "title": "Bahasa Indonesia",
+        "pdf": "https://drive.google.com/file/d/1f_MqVDCHwNGVvpSPKuzaBMQzOUgBK3p9/preview/"
+    },
+    {
+        "id": 2,
+        "title": "Bahasa Inggris",
+        "pdf": "https://drive.google.com/file/d/1f_JR6HVaByEEUdlMfI9wjc8Xp49u0smD/preview/"
+    },
+    {
+        "id": 3,
+        "title": "Ilmu Pengetahuan Alam",
+        "pdf": "https://drive.google.com/file/d/1dro4y2g4gzwXFhNIkOds3t-5dmPsvkoG/preview"
+    },
+    {
+        "id": 4,
+        "title": "Informatika",
+        "pdf": "https://drive.google.com/file/d/1g-vyF_vJ7DjJEE0Irxx9GyExOT9BHEer/preview/"
+    },
+    {
+        "id": 5,
+        "title": "Informatika Semester 1",
+        "pdf": "https://drive.google.com/file/d/1g-Aq1VVWDc2P4h1WNsTx_Xe0NxxHVAg2/preview/"
+    },
+    {
+        "id": 6,
+        "title": "Matematika",
+        "pdf": "https://drive.google.com/file/d/1dqAw0koARoCjk6pNJEoqUOBGJkKAOtec/preview/"
+    },
+    {
+        "id": 7,
+        "title": "Pendidikan Agama Islam",
+        "pdf": "https://drive.google.com/file/d/1g5KR6d8k41h3pgKPZwCl-Y1f8t2uRdfU/preview/"
+    },
+    {
+        "id": 8,
+        "title": "Pendidikan Pancasila",
+        "pdf": "https://drive.google.com/file/d/1g3AfmcCkEIKzWyj7aOFsraipLNPnqxp5/preview/"
+    },
+    {
+        "id": 9,
+        "title": "Sejarah",
+        "pdf": "https://drive.google.com/file/d/1diFBSegp6lXQEYlC-lJhGnuqACbxxq45/preview/"
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "title": "Bahasa Indonesia",
+        "pdf": "https://drive.google.com/file/d/1fhEIs3s6WAlI095RcMz06BmNZoS8QbZG/preview/"
+    },
+    {
+        "id": 42,
+        "title": "Bahasa Inggris",
+        "pdf": "https://drive.google.com/file/d/1ffUFJet4Zz2C3OJUnQrlMioMd8Q_9SFL/preview/"
+    },
+    {
+        "id": 3,
+        "title": "Bahasa Inggris Tingkat Lanjut",
+        "pdf": "https://drive.google.com/file/d/1fd6zmKfbFTkKIIAeYv6zD_dXStmZbldi/preview/"
+    },
+    {
+        "id": 4,
+        "title": "Biologi",
+        "pdf": "https://drive.google.com/file/d/1eKuZUrxZIj2URi8EHqWq6FlIy6WZeQm3/preview/"
+    },
+    {
+        "id": 5,
+        "title": "Ekonomi",
+        "pdf": "https://drive.google.com/file/d/1dxoMFMH2PFqg_4nf4sa_6NYRKs65tMjA/preview/"
+    },
+    {
+        "id": 6,
+        "title": "Fisika",
+        "pdf": "https://drive.google.com/file/d/1eFZzTtFE7SNQkaRAqpOxy8_zfuxvsHsY/preview/"
+    },
+    {
+        "id": 7,
+        "title": "Geografi",
+        "pdf": "https://drive.google.com/file/d/1fHNpYFDYlMumn2TPQ0GyHMB51cLe0vIt/preview/"
+    },
+    {
+        "id": 8,
+        "title": "Kimia",
+        "pdf": "https://drive.google.com/file/d/1e4zSanW2rwvdoRhBwMk4wOwHuHs2gf9x/preview/"
+    },
+    {
+        "id": 9,
+        "title": "Matematika",
+        "pdf": "https://drive.google.com/file/d/1e9TseXcoFPCh_v1lwFutUsR0GOU1rFK9/preview/"
+    },
+    {
+        "id": 10,
+        "title": "Matematika Tingkat Lanjut",
+        "pdf": "https://drive.google.com/file/d/1e04zjFlanJToR1wRvk5PMa7t-tathDVQ/preview/"
+    },
+    {
+        "id": 11,
+        "title": "Pendidikan Agama Islam",
+        "pdf": "https://drive.google.com/file/d/1gEsCL0jZuqMlJ3dmcILC-oifwuXcWa4Q/preview/"
+    },
+    {
+        "id": 12,
+        "title": "Pendidikan Pancasila",
+        "pdf": "https://drive.google.com/file/d/1gJl8gYAHNEi9f6D4ENd39pXMJNOiII8n/preview/"
+    },
+    {
+        "id": 13,
+        "title": "Sejarah",
+        "pdf": "https://drive.google.com/file/d/1dyuxYbZmzH3bKHwC1UCh07xHXtzTiYEZ/preview/"
+    },
+    {
+        "id": 14,
+        "title": "Sosiologi",
+        "pdf": "https://drive.google.com/file/d/1dwSCwSUul1SaSka2c8bJ5kJKHPqd51Uh/preview/"
+    }
+]
