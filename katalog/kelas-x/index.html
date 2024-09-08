@@ -222,8 +222,7 @@
 
             // Filter buku berdasarkan judul atau penulis yang mengandung kata kunci pencarian
             const filteredBooks = books.filter(book =>
-                book.title.toLowerCase().includes(searchTerm) ||
-                book.author.toLowerCase().includes(searchTerm)
+                book.title.toLowerCase().includes(searchTerm)
             );
 
             currentPage = 1; 
