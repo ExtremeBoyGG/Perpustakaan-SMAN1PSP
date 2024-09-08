@@ -234,8 +234,7 @@
         function nextPage() {
             const searchTerm = searchInputs.value.trim().toLowerCase();
             const filteredBooks = searchTerm ? books.filter(book =>
-                book.title.toLowerCase().includes(searchTerm) ||
-                book.author.toLowerCase().includes(searchTerm)
+                book.title.toLowerCase().includes(searchTerm)
             ) : books;
 
             if ((currentPage * booksPerPage) < filteredBooks.length) {
