@@ -30,7 +30,7 @@ const Books = [
     {"id":12,title:"Kanthi(L)","author":"Shofie Hapsari",url:"#"},
     {"id":25,title:"Kastil Es & Air Mancur yang Berdansa","author":"Prisca Primasari",url:"#"},
     {"id":53,title:"Kau Aku dan Sepucuk Angpau Merah-1","author":"Tere Liye",url:"#"},
-    {"id":54,title:"Komet Minor -","author":"Tere Liye",url:"#"},
+    {"id":54,title:"Komet Minor","author":"Tere Liye",url:"#"},
     {"id":55,title:"LUMPU ","author":"Tere Liye",url:"#"},
     {"id":31,title:"Love Paint","author":"RevelRebel",url:"#"},
     {"id":13,title:"Love The Way You Lie","author":"Carmen LaBohemian",url:"#"},
@@ -66,7 +66,7 @@ const Books = [
     {"id":68,title:"Selena (unedited version)","author":"Tere Liye",url:"#"},
     {"id":69,title:"Sepotong Hati Yang Baru","author":"Tere Liye",url:"#"},
     {"id":70,title:"Sesuk","author":"Tere Liye",url:"#"},
-    {"id":71,title:"Si Anak Badai by","author":"Tere Liye",url:"#"},
+    {"id":71,title:"Si Anak Badai","author":"Tere Liye",url:"#"},
     {"id":73,title:"Si Anak Kuat","author":"Tere Liye",url:"#"},
     {"id":75,title:"Si Anak Pintar","author":"Tere Liye",url:"#"},
     {"id":76,title:"Si Anak Spesial","author":"Tere Liye",url:"#"},
@@ -76,14 +76,14 @@ const Books = [
     {"id":86,title:"Silencio","author":"Winnyraca",url:"#"},
     {"id":40,title:"Suami Pengganti","author":"Nah_Wa",url:"#"},
     {"id":78,title:"TENTANG KAMU","author":"Tere Liye",url:"#"},
-    {"id":36,title:"The DaddyS Affair  (WP)(1)","author":"RevelRebel",url:"#"},
+    {"id":36,title:"The DaddyS Affair","author":"RevelRebel",url:"#"},
     {"id":6,title:"The Marriage Cure","author":"Citra Novy",url:"#"},
     {"id":81,title:"Titik Tanpa Koma","author":"Masda Raimunda",url:"#"},
     {"id":15,title:"To Forgive","author":"Midgardst",url:"#"},
     {"id":82,title:"Trapped","author":"Agustini Tandean",url:"#"},
     {"id":21,title:"Trapped By You","author":"Pipit Chie",url:"#"},
     {"id":22,title:"Trapped By You Extra Part","author":"Pipit Chie",url:"#"},
-    {"id":3,title:"Twoprince_Oneking","author":"Apa Daya Hati Ini",url:"#"}
+    {"id":3,title:"Apa Daya Hati Ini","author":"Twoprince_Oneking",url:"#"}
 ];
 
 let hasScrolled = window.scrollY > 10;
