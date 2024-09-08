@@ -180,7 +180,7 @@
         let books = []; // Daftar buku
         
         function extractFileId(url) {
-            const regex = /\/file\/d\/(.*?)\/preview/;
+            const regex = /\/file\/d\/(.*?)\/preview;
             const match = url.match(regex);
             return match ? match[1] : null;
         }
