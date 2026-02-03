@@ -1,283 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perpustakaan Digital SMAN 1 PSP | Buku Kelas X</title>
     <link rel="icon" href="/images/PERPUS.png" type="image/png">
+    <meta name="description" content="Koleksi Buku Pelajaran Kelas X Perpustakaan Digital SMA Negeri 1 Padangsidimpuan">
     <meta property="og:description" content="Buku Kelas X Perpustakaan Digital SMA NEGERI 1 PADANGSIDIMPUAN">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    	#search-results {
-    width: 100%; 
-    max-height: 200px; 
-    overflow-y: auto; 
-    z-index: 5000; 
-    background-color: white; 
-    border: 1px solid #ddd; 
-    border-radius: 4px; 
-}
-        #navbar {
-            transition: background-color 0.3s;
-        }
-        .navbar-transparent {
-            background-color: transparent;
-        }
-        .navbar-solid {
-            background-color: #1e3a8a; 
-        }
-        
-        #sidebar {
-            transition: transform 0.3s ease;
-        }
-        
-        #overlay {
-            transition: opacity 0.3s ease;
-        }
-        .overlay-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .overlay-visible {
-            opacity: 0.5;
-            pointer-events: auto;
-        }
-        
-@media (min-width: 768px) {
-    #search-icon {
-        display: none;
-    }
-    #search-input {
-        display: block;
-    }
-}
-@media (max-width: 767px) {
-    #search-input {
-    	width:100%;
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-#search-results {
-    width: 100%; 
-}
-
-
-
-
-
-    </style>
+    
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="font-sans bg-white text-gray-900">
-
-    <!-- Header -->
-    <header id="navbar" class="navbar-transparent fixed w-full z-50 text-white p-4 flex justify-between items-center top-0">
-        <!-- Logo dan burger menu -->
-        <div class="flex items-center">
-            <button id="sidebarToggle" class="mr-4 md:hidden focus:outline-none">
-                <!-- Icon Burger -->
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<body>
+    <header id="navbar" class="navbar navbar-transparent">
+        <div class="navbar-brand">
+            <button id="sidebarToggle" class="navbar-toggle" aria-label="Toggle menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
-            <a href="/"><img src="/images/PERPUS.png" alt="Logo Perpustakaan" class="w-10"></a>
-            <span class="text-title">SMA Negeri 1 PSP</span>
+            <a href="/"><img src="/images/PERPUS.png" alt="Logo Perpustakaan"></a>
+            <span>SMA Negeri 1 PSP</span>
         </div>
-        <!-- Form pencarian buku -->
-            <!-- Ganti div form pencarian dengan SVG ikon pencarian awalnya -->
-<div id="search-container" class="relative">
-    <button id="search-icon" class="focus:outline-none">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35"></path>
-        </svg>
-    </button>
-    <input id="search-input" type="text" placeholder="Cari buku..." class="border p-2 rounded-md text-black w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 hidden">
-    <div id="search-results" class="absolute left-0 right-0 bg-white border rounded-md mt-1 max-h-48 overflow-y-auto hidden z-10"></div>
-</div>
-        <!-- Menu Navbar untuk tampilan desktop -->
-        <nav class="hidden md:flex space-x-4">
-            <a href="/" class="text-gray-300 hover:text-white">Home</a>
-            <a href="/katalog/" class="text-gray-300 hover:text-white">Katalog Buku</a>
-            
-            <a href="/kontak/" class="text-gray-300 hover:text-white">Kontak</a>
+        <div id="search-container" class="navbar-search">
+            <input id="search-input" type="text" placeholder="Cari buku...">
+            <svg class="search-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <div id="search-results" class="search-results hidden"></div>
+        </div>
+        <nav class="navbar-nav">
+            <a href="/">Beranda</a>
+            <a href="/katalog/" class="active">Katalog Buku</a>
+            <a href="/kontak/">Kontak</a>
         </nav>
     </header>
 
-    <!-- Gambar Background dengan Teks -->
-    <div class="relative w-screen top-0">
-        <img src="/images/smansa.jpeg" alt="Perpustakaan Digital" class="w-full h-[350px] object-cover bg-cover">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50">
-            <h1 class="text-2xl md:text-4xl font-bold">PERPUSTAKAAN DIGITAL</h1>
-            <h2 class="text-lg md:text-2xl mt-2">SMA Negeri 1 Padangsidimpuan</h2>
-        </div>
-    </div>
-
-    <!-- Sidebar dan Konten -->
-    <div class="flex">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-100 p-4 transform -translate-x-full md:translate-x-0 z-20 md:top-0 md:hidden">
-            <!-- Tombol Tutup Sidebar -->
-            <button id="close-sidebar" class="absolute top-4 right-4 text-gray-700 hover:text-gray-900">
-                
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <button id="close-sidebar" class="sidebar-close" aria-label="Close menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
             </button>
-            <!-- Navigasi sidebar -->
-            <nav>
-                <ul>
-                    <li><a href="/" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded mt-[75px]">Home</a></li>
-                    <li><a href="/katalog/" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Katalog Buku</a></li>
-                    
-                    <li><a href="/kontak/" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Kontak</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <!-- Overlay -->
-        <div id="overlay" class="fixed inset-0 bg-black overlay-hidden z-10 md:hidden"></div>
-
-    <main class="container mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-4">Koleksi Buku Pelajaran Kelas X</h1>
-        
-        <!-- Search Bar -->
-        <div class="mb-4">
-            <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="Cari judul novel..." 
-                class="w-full p-2 border border-gray-300 rounded"
-            />
         </div>
-        
-        <!-- Tabel Buku -->
-        <table class="min-w-full bg-white">
-            <thead>
-                <tr>
-                    <th class="py-0 px-0 border">Judul</th>
-                    <th class="py-2 px-0 border">Baca</th>
-                </tr>
-            </thead>
-            <tbody id="bookTable">
-                <!-- Buku akan dimuat di sini secara dinamis -->
-            </tbody>
-        </table>
-        
-        <!-- Navigasi Halaman -->
-        <div id="pagination-controls" class="flex justify-center my-4">
-            <button id="previous-page" class="px-4 py-2 mx-2 bg-gray-200 rounded hover:bg-gray-300">Previous</button>
-            <span id="page-info" class="mx-4">Page 1</span>
-            <button id="next-page" class="px-4 py-2 mx-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
+        <nav class="sidebar-nav">
+            <a href="/">Beranda</a>
+            <a href="/katalog/" class="active">Katalog Buku</a>
+            <a href="/kontak/">Kontak</a>
+        </nav>
+    </aside>
+    <div id="overlay" class="overlay"></div>
+
+    <section class="hero" style="min-height: 300px;">
+        <div class="hero-background">
+            <img src="/images/smansa.jpeg" alt="SMA Negeri 1 Padangsidimpuan">
+        </div>
+        <div class="hero-content">
+            <h1>BUKU PELAJARAN KELAS X</h1>
+            <h2>Perpustakaan Digital SMAN 1 PSP</h2>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#f0fdfa" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <main class="section" style="padding-top: 2rem;">
+        <div class="container">
+            <a href="/katalog/" class="btn btn-secondary mb-4">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Kembali ke Katalog
+            </a>
+            <div class="mb-4">
+                <input type="text" id="searchInput" placeholder="Cari judul buku..." class="form-input">
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Judul</th>
+                            <th>Penulis</th>
+                            <th style="width: 100px; text-align: center;">Baca</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookTable"></tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button id="previous-page"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Previous</button>
+                <span id="page-info">Page 1</span>
+                <button id="next-page">Next <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
         </div>
     </main>
-<script>
-	const searchInputs = document.getElementById('searchInput');
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="/images/PERPUS.png" alt="Logo Perpustakaan">
+                <div class="footer-brand-text">
+                    <h3>Perpustakaan Digital</h3>
+                    <p>SMA Negeri 1 Padangsidimpuan</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Beranda</a></li>
+                    <li><a href="/katalog/">Katalog Buku</a></li>
+                    <li><a href="/kontak/">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak</h4>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Merdeka No. 188</p>
+                    <p><i class="fas fa-envelope"></i> smanpasid@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Sosial Media</h4>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=100073554588913" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/sman1psp" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@smanegeri1padangsidimpuan759" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Perpustakaan Digital SMAN 1 PSP. All rights reserved.</p>
+            <p>Developed by <a href="https://github.com/ExtremeBoyGG" target="_blank">ExtremeBoy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const searchInputs = document.getElementById('searchInput');
         const booksTableBody = document.getElementById('bookTable');
         const previousPageButton = document.getElementById('previous-page');
         const nextPageButton = document.getElementById('next-page');
         const pageInfo = document.getElementById('page-info');
-        
+        const booksPerPage = 20;
+        let currentPage = 1;
+        let books = [];
 
-        const booksPerPage = 20; 
-        let currentPage = 1; 
-        let books = []; 
-        
         function extractFileId(url) {
             const regex = /\/file\/d\/(.*?)\/preview/;
             const match = url.match(regex);
             return match ? match[1] : null;
         }
 
-        // Fungsi untuk menampilkan buku berdasarkan halaman
         function displayBooks(filteredBooks = books) {
             booksTableBody.innerHTML = '';
-
-            // Hitung indeks buku yang ditampilkan berdasarkan halaman aktif
             const startIndex = (currentPage - 1) * booksPerPage;
             const endIndex = startIndex + booksPerPage;
             const booksToDisplay = filteredBooks.slice(startIndex, endIndex);
-
             booksToDisplay.forEach(book => {
-            	const fileId = extractFileId(book.pdf);
+                const fileId = extractFileId(book.pdf);
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="py-5 px-2 border">${book.title}</td>
-                    <td class="py-5 px-2 border"><a href="/baca.html?id=${fileId}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center justify-center hover:bg-blue-600 block hover:underline"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a></td>`;
+                row.innerHTML = `<td>${book.title}</td><td>${book.author}</td><td style="text-align: center;"><a href="/baca.html?id=${fileId}" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></a></td>`;
                 booksTableBody.appendChild(row);
             });
-
-            // Update informasi halaman
             pageInfo.textContent = `Page ${currentPage}`;
-
-            // Perbarui tombol navigasi
             previousPageButton.disabled = currentPage === 1;
             nextPageButton.disabled = endIndex >= filteredBooks.length;
         }
 
-        // Fungsi untuk mencari buku berdasarkan input
         function searchBooks() {
             const searchTerm = searchInputs.value.trim().toLowerCase();
-
-            // Jika input pencarian kosong, tampilkan semua buku
-            if (searchTerm === '') {
-                currentPage = 1; // Reset halaman ke awal
-                displayBooks(books);
-                return;
-            }
-
-            // Filter buku berdasarkan judul atau penulis yang mengandung kata kunci pencarian
-            const filteredBooks = books.filter(book =>
-                book.title.toLowerCase().includes(searchTerm)
-            );
-
-            currentPage = 1; 
+            if (searchTerm === '') { currentPage = 1; displayBooks(books); return; }
+            const filteredBooks = books.filter(book => book.title.toLowerCase().includes(searchTerm) || book.author.toLowerCase().includes(searchTerm));
+            currentPage = 1;
             displayBooks(filteredBooks);
         }
 
-        // Fungsi untuk navigasi ke halaman berikutnya
         function nextPage() {
             const searchTerm = searchInputs.value.trim().toLowerCase();
-            const filteredBooks = searchTerm ? books.filter(book =>
-                book.title.toLowerCase().includes(searchTerm)
-            ) : books;
-
-            if ((currentPage * booksPerPage) < filteredBooks.length) {
-                currentPage++;
-                displayBooks(filteredBooks);
-            }
+            const filteredBooks = searchTerm ? books.filter(book => book.title.toLowerCase().includes(searchTerm) || book.author.toLowerCase().includes(searchTerm)) : books;
+            if ((currentPage * booksPerPage) < filteredBooks.length) { currentPage++; displayBooks(filteredBooks); }
         }
 
-        // Fungsi untuk navigasi ke halaman sebelumnya
         function previousPage() {
             if (currentPage > 1) {
                 currentPage--;
                 const searchTerm = searchInputs.value.trim().toLowerCase();
-                const filteredBooks = searchTerm ? books.filter(book =>
-                    book.title.toLowerCase().includes(searchTerm)
-                ) : books;
-
+                const filteredBooks = searchTerm ? books.filter(book => book.title.toLowerCase().includes(searchTerm) || book.author.toLowerCase().includes(searchTerm)) : books;
                 displayBooks(filteredBooks);
             }
         }
 
-        // Event listener untuk tombol navigasi
         nextPageButton.addEventListener('click', nextPage);
         previousPageButton.addEventListener('click', previousPage);
-
-        // Panggil fungsi pencarian saat pengguna mengetik di search bar
         searchInputs.addEventListener('input', searchBooks);
 
-        // Mengambil data buku dari file JSON dan menampilkan buku
         fetch('/katalog/kelas-x/books.json')
             .then(response => response.json())
-            .then(data => {
-                books = data;
-                displayBooks();
-            })
+            .then(data => { books = data; displayBooks(); })
             .catch(error => console.error('Error fetching books:', error));
-            </script>
-            
-<!-- ExtremeBoy Coded This -->
-	<!-- My Github : github.com/ExtremeBoyGG -->
-	<!-- Credits To Me -->
-		
+    </script>
     <script src="/script.js"></script>
 </body>
 </html>

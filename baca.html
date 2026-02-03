@@ -1,51 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Baca Buku Online</title>
+    <title>Baca Buku Online | Perpustakaan Digital SMAN 1 PSP</title>
     <link rel="icon" href="/images/PERPUS.png" type="image/png">
-    <meta property="og:description" content="© ExtremeBoy">
+    <meta property="og:description" content="Baca Buku Online - Perpustakaan Digital SMAN 1 PSP">
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        /* CSS untuk membuat iframe memenuhi layar penuh */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Hapus scroll pada body */
+            overflow: hidden;
+            background: var(--ocean-50);
+        }
+
+        .reader-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reader-header {
+            background: linear-gradient(135deg, var(--ocean-700) 0%, var(--ocean-800) 100%);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .reader-header a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            transition: var(--transition-fast);
+        }
+
+        .reader-header a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .reader-header h1 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
         }
 
         iframe {
-            flex-grow: 1; /* Membuat iframe mengisi ruang yang tersedia */
+            flex-grow: 1;
             width: 100%;
-            height: 100vh; /* Menggunakan tinggi penuh viewport */
-            border: none; /* Menghapus border */
+            height: calc(100vh - 56px);
+            border: none;
+        }
+
+        .error-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .error-container svg {
+            width: 80px;
+            height: 80px;
+            color: var(--ocean-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .error-container h2 {
+            color: var(--ocean-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .error-container p {
+            color: var(--slate-500);
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
 <body>
-    <!-- Iframe untuk menampilkan PDF -->
-    <iframe id="pdf-viewer" class="border-0"></iframe>
+    <div class="reader-container">
+        <header class="reader-header">
+            <a href="/katalog/">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Kembali
+            </a>
+            <h1>Perpustakaan Digital SMAN 1 PSP</h1>
+            <div style="width: 100px;"></div>
+        </header>
+        
+        <div id="content"></div>
+    </div>
 
     <script>
-        // Ambil ID dari parameter query URL
         const urlParams = new URLSearchParams(window.location.search);
         const pdfId = urlParams.get('id');
+        const contentDiv = document.getElementById('content');
 
-        // Cek apakah ID ada
         if (pdfId) {
-            // Tampilkan PDF menggunakan Google Drive Viewer
-            const pdfViewer = document.getElementById('pdf-viewer');
-            pdfViewer.src = `https://drive.google.com/file/d/${pdfId}/preview`;
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://drive.google.com/file/d/${pdfId}/preview`;
+            iframe.allow = "autoplay";
+            contentDiv.appendChild(iframe);
         } else {
-            // Jika tidak ada ID, tampilkan pesan kesalahan
-            document.body.innerHTML = "<p class='text-red-500 text-center mt-4'>File tidak ditemukan.</p>";
+            contentDiv.innerHTML = `
+                <div class="error-container">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    <h2>File Tidak Ditemukan</h2>
+                    <p>Maaf, buku yang Anda cari tidak tersedia atau link tidak valid.</p>
+                    <a href="/katalog/" class="btn btn-primary">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Kembali ke Katalog
+                    </a>
+                </div>
+            `;
         }
     </script>
-<!-- ExtremeBoy Coded This -->
-	<!-- My Github : github.com/ExtremeBoyGG -->
-	<!-- Credits To Me -->
 </body>
 </html>

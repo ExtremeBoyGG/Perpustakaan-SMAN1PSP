@@ -1,171 +1,297 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perpustakaan Digital SMAN 1 PSP | HOME</title>
-    <link rel="icon" href="/images/PERPUS.png" type="image/png">
-    <meta property="og:description" content="Perpustakaan Digital SMA NEGERI 1 PADANGSIDIMPUAN">
-    <!-- Menyertakan CDN Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    	#search-results {
-    width: 100%; 
-    max-height: 200px; 
-    overflow-y: auto; 
-    z-index: 5000; 
-    background-color: white; 
-    border: 1px solid #ddd; 
-    border-radius: 4px; 
-}
-        /* Tambahkan style untuk efek navbar transparan */
-        #navbar {
-            transition: background-color 0.3s;
-        }
-        .navbar-transparent {
-            background-color: transparent;
-        }
-        .navbar-solid {
-            background-color: #1e3a8a; /* Warna biru solid */
-        }
-        /* Animasi untuk sidebar */
-        #sidebar {
-            transition: transform 0.3s ease;
-        }
-        /* Overlay */
-        #overlay {
-            transition: opacity 0.3s ease;
-        }
-        .overlay-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .overlay-visible {
-            opacity: 0.5;
-            pointer-events: auto;
-        }
-        /* Tampilkan form pencarian langsung di desktop */
-@media (min-width: 768px) {
-    #search-icon {
-        display: none;
-    }
-    #search-input {
-        display: block;
-    }
-}
-@media (max-width: 767px) {
-    #search-input {
-    	width:100%;
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-#search-results {
-    width: 100%; /* Agar elemen hasil pencarian sama lebar dengan input */
-}
+    <link rel="icon" href="/images/PERPUS.png" type="image/png" />
+    <meta
+      name="description"
+      content="Perpustakaan Digital SMA Negeri 1 Padangsidimpuan - Akses ribuan buku pelajaran dan bacaan berkualitas"
+    />
+    <meta
+      property="og:description"
+      content="Perpustakaan Digital SMA NEGERI 1 PADANGSIDIMPUAN"
+    />
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header id="navbar" class="navbar navbar-transparent">
+      <div class="navbar-brand">
+        <button
+          id="sidebarToggle"
+          class="navbar-toggle"
+          aria-label="Toggle menu"
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+        <a href="/">
+          <img src="/images/PERPUS.png" alt="Logo Perpustakaan" />
+        </a>
+        <span>SMA Negeri 1 PSP</span>
+      </div>
 
-    </style>
-</head>
-<body class="font-sans bg-white text-gray-900">
-
-    <!-- Header -->
-    <header id="navbar" class="navbar-transparent fixed w-full z-50 text-white p-4 flex justify-between items-center top-0">
-        <!-- Logo dan burger menu -->
-        <div class="flex items-center">
-            <button id="sidebarToggle" class="mr-4 md:hidden focus:outline-none">
-                <!-- Icon Burger -->
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <a href="/"><img src="/images/PERPUS.png" alt="Logo Perpustakaan" class="w-10"></a>
-            <span class="text-title">SMA Negeri 1 PSP</span>
-        </div>
-        <!-- Form pencarian buku -->
-            <!-- Ganti div form pencarian dengan SVG ikon pencarian awalnya -->
-<div id="search-container" class="relative">
-    <button id="search-icon" class="focus:outline-none">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35"></path>
+      <!-- Search -->
+      <div id="search-container" class="navbar-search">
+        <input id="search-input" type="text" placeholder="Cari buku..." />
+        <svg
+          class="search-icon"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          ></path>
         </svg>
-    </button>
-    <input id="search-input" type="text" placeholder="Cari buku..." class="border p-2 rounded-md text-black w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 hidden">
-    <div id="search-results" class="absolute left-0 right-0 bg-white border rounded-md mt-1 max-h-48 overflow-y-auto hidden z-10"></div>
-</div>
-        <!-- Menu Navbar untuk tampilan desktop -->
-        <nav class="hidden md:flex space-x-4">
-            <a href="/" class="text-gray-300 hover:text-white">Home</a>
-            <a href="/katalog/" class="text-gray-300 hover:text-white">Katalog Buku</a>
-            
-            <a href="/kontak/" class="text-gray-300 hover:text-white">Kontak</a>
-        </nav>
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="navbar-nav">
+        <a href="/" class="active">Beranda</a>
+        <a href="/katalog/">Katalog Buku</a>
+        <a href="/kontak/">Kontak</a>
+      </nav>
     </header>
 
-    <!-- Gambar Background dengan Teks -->
-    <div class="relative w-screen top-0">
-        <img src="/images/smansa.jpeg" alt="Perpustakaan Digital" class="w-full h-[350px] object-cover bg-cover">
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50">
-            <h1 class="text-2xl md:text-4xl font-bold">PERPUSTAKAAN DIGITAL</h1>
-            <h2 class="text-lg md:text-2xl mt-2">SMA Negeri 1 Padangsidimpuan</h2>
-        </div>
-    </div>
+    <!-- Mobile Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h3>Menu</h3>
+        <button
+          id="close-sidebar"
+          class="sidebar-close"
+          aria-label="Close menu"
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/" class="active">Beranda</a>
+        <a href="/katalog/">Katalog Buku</a>
+        <a href="/kontak/">Kontak</a>
+      </nav>
+    </aside>
+    <div id="overlay" class="overlay"></div>
 
-    <!-- Sidebar dan Konten -->
-    <div class="flex">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-100 p-4 transform -translate-x-full md:translate-x-0 z-20 md:top-0 md:hidden">
-            <!-- Tombol Tutup Sidebar -->
-            <button id="close-sidebar" class="absolute top-4 right-4 text-gray-700 hover:text-gray-900">
-                
-            </button>
-            <!-- Navigasi sidebar -->
-            <nav>
-                <ul>
-                    <li><a href="/" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded mt-[75px]">Home</a></li>
-                    <li><a href="/katalog/" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Katalog Buku</a></li>
-                    
-                    <li><a href="/kontak/" class="block py-2 px-4 text-gray-700 hover:bg-blue-200 rounded">Kontak</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <!-- Overlay -->
-        <div id="overlay" class="fixed inset-0 bg-black overlay-hidden z-10 md:hidden"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <img src="/images/smansa.jpeg" alt="SMA Negeri 1 Padangsidimpuan" />
+      </div>
+      <div class="hero-content">
+        <h1>PERPUSTAKAAN DIGITAL</h1>
+        <h2>SMA Negeri 1 Padangsidimpuan</h2>
+        <p>
+          Jelajahi dunia pengetahuan dalam genggamanmu. Akses ribuan koleksi
+          buku pelajaran dan bacaan berkualitas kapan saja, di mana saja.
+        </p>
+        <a href="/katalog/" class="btn btn-outline">
+          <span>Jelajahi Katalog</span>
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            ></path>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-wave">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="#f0fdfa"
+            d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+          ></path>
+        </svg>
+      </div>
+    </section>
 
-        <!-- Konten Utama -->
-        <main class="flex-1 p-4 mt-4 md:ml-0">
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold">Selamat Datang di Perpustakaan Digital</h2>
-    <div class="mt-4 flex flex-col md:flex-row items-center">
-        <!-- Gambar -->
-        <img src="/images/smansa.jpeg" alt="Gedung Sekolah" class="w-full md:w-1/2 h-auto object-cover rounded-lg shadow-md">
+    <!-- Main Content -->
+    <main class="section">
+      <div class="container">
+        <h2 class="section-title">Selamat Datang di Perpustakaan Digital</h2>
 
-        <!-- Teks -->
-        <div class="md:ml-8 mt-4 md:mt-0">
-            <p class="text-gray-700">
-                SMA Negeri 1 Padangsidimpuan merupakan salah satu sekolah menengah atas negeri yang berlokasi di Kota Padangsidimpuan, Sumatera Utara. Dengan visi yang jelas untuk mencetak generasi muda yang unggul dan berkarakter, sekolah ini berkomitmen untuk memberikan pendidikan berkualitas bagi seluruh siswanya.
+        <div class="info-section">
+          <div class="info-image">
+            <img
+              src="/images/smansa.jpeg"
+              alt="Gedung SMA Negeri 1 Padangsidimpuan"
+            />
+          </div>
+          <div class="info-content">
+            <h3>Tentang Sekolah Kami</h3>
+            <p>
+              SMA Negeri 1 Padangsidimpuan merupakan salah satu sekolah menengah
+              atas negeri yang berlokasi di Kota Padangsidimpuan, Sumatera
+              Utara. Dengan visi yang jelas untuk mencetak generasi muda yang
+              unggul dan berkarakter, sekolah ini berkomitmen untuk memberikan
+              pendidikan berkualitas bagi seluruh siswanya.
             </p>
-            <div class="mt-4">
-                <p><strong>NPSN:</strong> 10212201</p>
-                <p><strong>Alamat:</strong> Jalan Merdeka No. 188 Kota Padangsidimpuan, Sumatera Utara</p>
-                <p><strong>Kepala Sekolah:</strong> Dra. Nursyawiyah Hutauruk, M.Pd.</p>
-                <p><strong>Visi:</strong> Mewujudkan Generasi Yang Taqwa, Cerdas Berkarakter, Peduli Lingkungan Dan Bermartabat Serta Berwawasan Global</p>
-            </div>
-            <p><strong>Media Sosial:</strong></p>
-            <ul class="list-disc ml-6">
-                <li><a href="https://www.facebook.com/profile.php?id=100073554588913" class="text-blue-500 hover:underline">Facebook</a></li>
-                <li><a href="https://instagram.com/sman1psp" class="text-blue-500 hover:underline">Instagram</a></li>
-                <li><a href="https://youtube.com/@smanegeri1padangsidimpuan759" class="text-blue-500 hover:underline">YouTube</a></li>
-            </ul>
-        </div>
-            </section>
-        </main>
-    </div>
 
-<!-- ExtremeBoy Coded This -->
-	<!-- My Github : github.com/ExtremeBoyGG -->
-	<!-- Credits To Me -->
-		
+            <div class="info-list">
+              <p><strong>NPSN:</strong> 10212201</p>
+              <p>
+                <strong>Alamat:</strong> Jalan Merdeka No. 188 Kota
+                Padangsidimpuan, Sumatera Utara
+              </p>
+              <p>
+                <strong>Kepala Sekolah:</strong> Dra. Nursyawiyah Hutauruk,
+                M.Pd.
+              </p>
+              <p>
+                <strong>Visi:</strong> Mewujudkan Generasi Yang Taqwa, Cerdas
+                Berkarakter, Peduli Lingkungan Dan Bermartabat Serta Berwawasan
+                Global
+              </p>
+            </div>
+
+            <p><strong>Media Sosial:</strong></p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/profile.php?id=100073554588913"
+                target="_blank"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://instagram.com/sman1psp"
+                target="_blank"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://youtube.com/@smanegeri1padangsidimpuan759"
+                target="_blank"
+                title="YouTube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="/images/PERPUS.png" alt="Logo Perpustakaan" />
+          <div class="footer-brand-text">
+            <h3>Perpustakaan Digital</h3>
+            <p>SMA Negeri 1 Padangsidimpuan</p>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/katalog/">Katalog Buku</a></li>
+            <li><a href="/kontak/">Kontak</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Kontak</h4>
+          <div class="footer-contact">
+            <p><i class="fas fa-map-marker-alt"></i> Jl. Merdeka No. 188</p>
+            <p><i class="fas fa-envelope"></i> smanpasid@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Sosial Media</h4>
+          <div class="footer-social">
+            <a
+              href="https://www.facebook.com/profile.php?id=100073554588913"
+              target="_blank"
+              title="Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://instagram.com/sman1psp"
+              target="_blank"
+              title="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://youtube.com/@smanegeri1padangsidimpuan759"
+              target="_blank"
+              title="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Perpustakaan Digital SMAN 1 PSP. All rights reserved.</p>
+        <p>
+          Developed by
+          <a href="https://github.com/ExtremeBoyGG" target="_blank"
+            >ExtremeBoy</a
+          >
+        </p>
+      </div>
+    </footer>
+
     <script src="/script.js"></script>
-</body>
+  </body>
 </html>
